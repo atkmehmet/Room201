@@ -8,6 +8,7 @@ class MyApplication: Application()
     companion object{
         lateinit var userDao: UserDao
 
+
     }
 
     override fun onCreate() {
