@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val userService: UserService,private val userDao: UserDao):ViewModel( ) {
+class MainViewModel(private val userService: UserService):ViewModel() {
 
     var resulState by mutableStateOf<List<User>>(emptyList())
       private set
@@ -21,5 +21,5 @@ class MainViewModel(private val userService: UserService,private val userDao: Us
 
 }
 class MainViewFactory:ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.userService,MyApplication.userDao) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.service) as T
 }

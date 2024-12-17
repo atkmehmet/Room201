@@ -15,6 +15,6 @@ interface UserDao {
 
 
     @Insert
-    fun insert(vararg users:List<UserEntity>)
+    fun insert( users:List<UserEntity>)
 
 }
