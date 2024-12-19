@@ -13,9 +13,15 @@ class MainViewModel(private val userService: UserService):ViewModel() {
     var resulState by mutableStateOf<List<User>>(emptyList())
       private set
     init {
-        viewModelScope.launch {
-            val users = userService.getUsers()
-            resulState = users
+        try {
+
+            viewModelScope.launch {
+                val users = userService.getUsers()
+                resulState = users
+            }
+        }
+        catch (e:Exception){
+            throw IllegalStateException(e.message)
         }
     }
 
