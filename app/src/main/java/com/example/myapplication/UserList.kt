@@ -9,14 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun UserList(users:List<User>){
+fun UserList(users:List<UserEntity>){
 
         LazyColumn(modifier = Modifier.padding(16.dp)) {
 
             items(users.size){
                     Column {
                         Text(text = users[it].name)
-                        Text(text = users[it].username)
+                        Text(text = users[it].surname)
                         Text(text = users[it].id.toString())
                     }
             }

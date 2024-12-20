@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -28,21 +29,22 @@ class MainViewModel(private val userService: UserService,private val dao: UserDa
             //    val users = userService.getUsers()
              //   resulState = users
             //}
-
-            flow {
-                emit(userService.getUsers())
-            }.onEach {
-                val userEntities = it.map {
-                    user -> UserEntity(
-                        user.id,user.name,user.username,user.username
-                    )
-                }
-                dao.insert(userEntities)
-            }.flatMapConcat { dao.getAll() }
-                .catch {
-                emitAll(dao.getAll())
-            }.flowOn(Dispatchers.IO)
-                .collect{resulState = it}
+         viewModelScope.launch {
+             flow {
+                 emit(userService.getUsers())
+             }.onEach {
+                 val userEntities = it.map { user ->
+                     UserEntity(
+                         user.id, user.name, user.username, user.username
+                     )
+                 }
+                 dao.insert(userEntities)
+             }.flatMapConcat { dao.getAll() }
+                 .catch {
+                     emitAll(dao.getAll())
+                 }.flowOn(Dispatchers.IO)
+                 .collect { resulState = it }
+         }
         }
         catch (e:Exception){
             throw IllegalStateException(e.message)
