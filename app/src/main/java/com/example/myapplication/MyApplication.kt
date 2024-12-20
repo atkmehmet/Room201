@@ -2,6 +2,7 @@ package com.example.myapplication
 
 
 import android.app.Application
+import androidx.room.Room
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit
 class MyApplication:Application() {
     companion object {
         lateinit var service: UserService
+        lateinit var userDao: UserDao
     }
     override fun onCreate() {
         super.onCreate()
@@ -32,6 +34,11 @@ class MyApplication:Application() {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
 
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,"my-database"
+        ).build()
+        userDao = db.userDao()
 
         service = retrofit.create(UserService::class.java)
 
