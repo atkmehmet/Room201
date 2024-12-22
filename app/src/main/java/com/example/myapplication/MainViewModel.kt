@@ -3,6 +3,8 @@ package com.example.myapplication
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -17,11 +19,16 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val userService: UserService,private val dao: UserDao):ViewModel() {
+class MainViewModel(private val userService: UserService
+                    ,private val dao: UserDao
+                    ,private val mainTextFormatter: MainTextFormatter):ViewModel() {
 
     //var resulState by mutableStateOf<List<User>>(emptyList())
     var resulState by mutableStateOf<List<UserEntity>>(emptyList())
       private set
+
+    private val _uiStateLiveData = MutableLiveData("")
+    val uiStateLiveData :LiveData<String> = _uiStateLiveData
     init {
         try {
 
@@ -53,5 +60,5 @@ class MainViewModel(private val userService: UserService,private val dao: UserDa
 
 }
 class MainViewFactory:ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.service,MyApplication.userDao) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.service,MyApplication.userDao,MyApplication.mainTextFormatter) as T
 }

@@ -14,6 +14,7 @@ class MyApplication:Application() {
     companion object {
         lateinit var service: UserService
         lateinit var userDao: UserDao
+        lateinit var mainTextFormatter: MainTextFormatter
     }
     override fun onCreate() {
         super.onCreate()
@@ -42,6 +43,7 @@ class MyApplication:Application() {
 
         service = retrofit.create(UserService::class.java)
 
+        mainTextFormatter = MainTextFormatter(this)
 
     }
 
