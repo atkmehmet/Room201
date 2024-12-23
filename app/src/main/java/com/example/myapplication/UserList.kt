@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,7 +16,10 @@ fun UserList(users:List<UserEntity>,navController: NavController){
         LazyColumn(modifier = Modifier.padding(16.dp)) {
 
             items(users.size){
-                    Column {
+
+                    Column(modifier = Modifier.padding(16.dp).clickable {
+                        navController.navigate(AppNavigation.User.routeForName(users[it].name))
+                    }) {
                         Text(text = users[it].name)
                         Text(text = users[it].surname)
                         Text(text = users[it].id.toString())
