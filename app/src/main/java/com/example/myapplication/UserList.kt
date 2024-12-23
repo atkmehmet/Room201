@@ -7,9 +7,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun UserList(users:List<UserEntity>){
+fun UserList(users:List<UserEntity>,navController: NavController){
 
         LazyColumn(modifier = Modifier.padding(16.dp)) {
 
