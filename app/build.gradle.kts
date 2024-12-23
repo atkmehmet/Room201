@@ -68,6 +68,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
