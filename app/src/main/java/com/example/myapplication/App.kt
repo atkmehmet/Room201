@@ -1,7 +1,7 @@
 package com.example.myapplication
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
 
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -15,7 +15,7 @@ fun App(navController: NavHostController){
     NavHost(navController,startDestination = AppNavigation.Users.route){
         composable(route = AppNavigation.Users.route){
 
-            Screen(navController)
+            Users(navController)
         }
         composable(
             route = AppNavigation.User.route,
@@ -23,7 +23,7 @@ fun App(navController: NavHostController){
                 type = NavType.StringType
             })
         ){
-            User(it.arguments?.getString(AppNavigation.User.argumentName).orEmpty())
+            UserScreen(it.arguments?.getString(AppNavigation.User.argumentName).orEmpty())
         }
     }
 }
