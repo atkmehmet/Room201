@@ -5,11 +5,17 @@ import android.app.Application
 import androidx.room.Room
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
+
+@Module
+@InstallIn(SingletonComponent::class)
 class MyApplication:Application() {
     companion object {
         lateinit var service: UserService

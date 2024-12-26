@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
+
 }
 
 android {
@@ -85,4 +86,11 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
+
+
+    implementation("androidx.hilt:hilt-navigation:1.2.0")
 }
