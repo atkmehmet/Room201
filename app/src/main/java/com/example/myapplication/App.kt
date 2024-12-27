@@ -15,7 +15,7 @@ fun App(navController: NavHostController){
     NavHost(navController,startDestination = AppNavigation.Users.route){
         composable(route = AppNavigation.Users.route){
 
-            Users(navController)
+            Users(navController,hiltViewModel())
         }
         composable(
             route = AppNavigation.User.route,

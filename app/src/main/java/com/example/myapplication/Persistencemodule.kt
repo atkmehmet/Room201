@@ -20,5 +20,5 @@ class Persistencemodule {
     @Provides
     fun provideUserDao(appDatabase: AppDatabase) :UserDao = appDatabase.userDao()
 
-    
+
 }
