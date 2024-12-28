@@ -63,6 +63,6 @@ class MainViewModel @Inject constructor (private val userService: UserService
     }
 
 }
-class MainViewFactory:ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.service,MyApplication.userDao,MyApplication.mainTextFormatter) as T
-}
+//class MainViewFactory:ViewModelProvider.Factory {
+  //  override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(MyApplication.service,MyApplication.userDao,MyApplication.mainTextFormatter) as T
+//}

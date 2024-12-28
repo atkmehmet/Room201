@@ -5,7 +5,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun Users(navController: NavController,viewModel: MainViewModel = viewModel(factory = MainViewFactory())){
+fun Users(navController: NavController,viewModel: MainViewModel){
 
     UserList(users = viewModel.resulState,navController)
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 
 import androidx.navigation.NavHostController
@@ -15,7 +16,7 @@ fun App(navController: NavHostController){
     NavHost(navController,startDestination = AppNavigation.Users.route){
         composable(route = AppNavigation.Users.route){
 
-            Users(navController,hiltViewModel())
+            Users(navController, hiltViewModel())
         }
         composable(
             route = AppNavigation.User.route,
