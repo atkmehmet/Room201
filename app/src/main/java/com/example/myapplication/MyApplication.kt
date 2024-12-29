@@ -19,45 +19,45 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 class MyApplication:Application() {
-    companion object {
-        lateinit var service: UserService
-        lateinit var userDao: UserDao
-        lateinit var mainTextFormatter: MainTextFormatter
-    }
-    override fun onCreate() {
-        super.onCreate()
+   // companion object {
+     //   lateinit var service: UserService
+      //  lateinit var userDao: UserDao
+      //  lateinit var mainTextFormatter: MainTextFormatter
+    //}
+   // override fun onCreate() {
+     //   super.onCreate()
 
-        @Provides
-        fun providerOkHttpClient(): OkHttpClient =
-         OkHttpClient
-            .Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .build()
+     //   @Provides
+       // fun providerOkHttpClient(): OkHttpClient =
+       //  OkHttpClient
+         //   .Builder()
+           // .readTimeout(15, TimeUnit.SECONDS)
+           // .connectTimeout(15, TimeUnit.SECONDS)
+          //  .build()
 
-        @Provides
-        fun providerMoshi ():Moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory()).build()
+      //  @Provides
+       // fun providerMoshi ():Moshi = Moshi.Builder()
+         //   .add(KotlinJsonAdapterFactory()).build()
 
-        @Provides
-       fun providerRetrofit(okHttpClient: OkHttpClient,moshi: Moshi):Retrofit = Retrofit
-            .Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
+       // @Provides
+       //fun providerRetrofit(okHttpClient: OkHttpClient,moshi: Moshi):Retrofit = Retrofit
+         //   .Builder()
+           // .baseUrl("https://jsonplaceholder.typicode.com/")
+            //.client(okHttpClient)
+            //.addConverterFactory(MoshiConverterFactory.create(moshi))
+           // .build()
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java,"my-database"
-        ).build()
+       // val db = Room.databaseBuilder(
+         //   applicationContext,
+           // AppDatabase::class.java,"my-database"
+       // ).build()
         //userDao = db.userDao()
-      @Provides
-       fun provideUserService(retrofit: Retrofit):UserService = retrofit.create(UserService::class.java)
+     // @Provides
+      // fun provideUserService(retrofit: Retrofit):UserService = retrofit.create(UserService::class.java)
 
         //mainTextFormatter = MainTextFormatter(this)
 
-    }
+   // }
 
 
 }
