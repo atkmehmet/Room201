@@ -23,7 +23,8 @@ import javax.inject.Inject
 import kotlin.jvm.Throws
 
 @HiltViewModel
-class MainViewModel @Inject constructor (private val userService: UserService
+class MainViewModel @Inject constructor (
+                     private val userService: UserService
                     ,private val dao: UserDao
                     ,private val mainTextFormatter: MainTextFormatter):ViewModel() {
 
