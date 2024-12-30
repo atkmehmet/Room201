@@ -2,9 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
-    id ("kotlin-android")
-    id ("dagger.hilt.android.plugin")
+   // id ("com.google.dagger.hilt.android")
+    //id ("kotlin-android")
+    //id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    //id ("dagger.hilt.android.plugin")
 
 }
 
@@ -93,13 +95,17 @@ dependencies {
 
 
 // Hilt for Jetpack libraries
-    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt ("androidx.hilt:hilt-compiler:1.2.0")
-
-
-
     implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt ("com.google.dagger:hilt-compiler:2.51.1")
-
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+
+    // Hilt for Jetpack ViewModel (Check if you are actively using this; it is an old alpha version)
+   // implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+
+    // Hilt Compiler for Jetpack (Ensure it's the latest stable version)
+   // kapt("androidx.hilt:hilt-compiler:1.2.0")
+
+    // Hilt Navigation Compose (For Compose Navigation support)
+ //   implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 }

@@ -31,7 +31,7 @@ class NetworkModule {
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient,moshi: Moshi):Retrofit=
         Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://jsonplaceholder.typicode.com/")
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()

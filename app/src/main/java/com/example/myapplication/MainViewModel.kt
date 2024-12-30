@@ -26,7 +26,7 @@ import kotlin.jvm.Throws
 class MainViewModel @Inject constructor (
                      private val userService: UserService
                     ,private val dao: UserDao
-                    ,private val mainTextFormatter: MainTextFormatter):ViewModel() {
+                    ):ViewModel() {
 
     //var resulState by mutableStateOf<List<User>>(emptyList())
     var resulState by mutableStateOf<List<UserEntity>>(emptyList())
